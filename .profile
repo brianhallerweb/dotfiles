@@ -1,16 +1,25 @@
 #!/bin/sh
 
-# Runs on login.
+# Profile file. Runs on login.
 
-# I don't know what these 2 do
-export QT_QPA_PLATFORMTHEME="qt5ct"
-export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
-
-export PATH="${PATH}:/home/bsh/Bin"
+export PATH="$PATH:$HOME/.scripts"
 export PYTHONPATH="${PYTHONPATH}:/home/bsh/Documents/UlanMedia"
-export EDITOR=/usr/bin/vim
-export BROWSER=/usr/bin/firefox
+export EDITOR="vim"
+#export TERMINAL="st"
+export TERMINAL="urxvt"
+export BROWSER="linkhandler"
+export TRUEBROWSER="firefox"
+export READER="zathura"
+export BIB="$HOME/Documents/LaTeX/uni.bib"
 
+[ -f ~/.scripts/shortcuts.sh ] && ~/.scripts/shortcuts.sh
 
 [ -f ~/.bashrc ] && source ~/.bashrc
 
+# Start graphical server if i3 not already running.
+if [ "$(tty)" = "/dev/tty1" ]; then
+	pgrep -x i3 || exec startx
+fi
+
+# Switch escape and caps and use wal colors if tty:
+sudo -n loadkeys ~/.scripts/ttymaps.kmap 2>/dev/null

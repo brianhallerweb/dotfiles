@@ -1,0 +1,173 @@
+# vim: filetype=i3
+
+# i3 config
+# This config file will use environmental variables such as $BROWSER and $TERMINAL.
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+
+# #---Basic Definitions---# #
+# Needed for i3-gaps
+for_window [class="^.*"] border pixel 2
+gaps inner 0
+gaps outer 0
+set $term --no-startup-id $TERMINAL
+set $mod Mod4
+set $stoprec --no-startup-id dmenurecord kill
+set $shutdown sudo -A shutdown -h now
+set $reboot sudo -A reboot
+set $netrefresh --no-startup-id sudo -A systemctl restart NetworkManager
+set $hibernate sudo -A systemctl suspend
+
+# #---Starting External Scripts---# #
+# Setting the background and colorscheme:
+#exec --no-startup-id wal -Ri ~/.config/wall.png >/dev/null
+# Starts dunst for notifications:
+exec --no-startup-id dunst
+# Composite manager:
+exec --no-startup-id compton
+# Runs the key remapping scripts
+exec --no-startup-id ~/.scripts/remaps
+# Run the script to update the mpd i3block on change.
+exec --no-startup-id i3mpdupdate
+# Remove recording icon if not properly closed on last shutdown.
+exec --no-startup-id rm -f ~/.larbs/.recording
+# Network manager applet
+exec --no-startup-id nm-applet
+# mpd startup
+exec --no-startup-id mpd
+
+# Set Xresources colors:
+set_from_resource $darkblack	color0  #000000
+set_from_resource $black	color8  #000000
+set_from_resource $darkred	color1  #000000
+set_from_resource $red		color9  #000000
+set_from_resource $darkgreen	color2  #000000
+set_from_resource $green	color10 #000000
+set_from_resource $darkyellow	color3  #000000
+set_from_resource $yellow	color11 #000000
+set_from_resource $darkblue	color4  #000000
+set_from_resource $blue		color12 #000000
+set_from_resource $darkmagenta	color5  #000000
+set_from_resource $magenta	color13 #000000
+set_from_resource $darkcyan	color6  #000000
+set_from_resource $cyan		color14 #000000
+set_from_resource $darkwhite	color7  #000000
+set_from_resource $white	color15 #000000
+set $transparent		#00000000
+
+#                       BORDER		BACKGROUND	TEXT		INDICATOR   CHILD_BORDER
+client.focused		$red		$red		$magenta	$darkmagenta		$darkblue
+client.unfocused	$transparent	$blue		$white		$darkblue		$darkblack
+client.focused_inactive	$transparent	$blue		$white		$darkblue		$darkblack
+client.urgent		$darkred	$darkred	$black		$darkred		$darkred
+client.background $black
+
+bar {
+	font pango:mono 12
+	colors {
+			background $darkblack
+			statusline $darkwhite
+			separator $cyan
+			focused_workspace  $blue $darkblue $darkblack
+        		active_workspace   $blue $blue $darkwhite
+      			inactive_workspace $darkblack $darkblack $white
+        		urgent_workspace   $darkblack $darkblack $white
+		}
+	status_command i3blocks
+	position bottom
+	mode dock
+	modifier None
+}
+
+# #---Letter Key Bindings---# #
+#bindsym $mod+q			[con_id="__focused__" instance="^(?!dropdowncalc|tmuxdd).*$"] kill
+bindsym $mod+q			kill
+
+bindsym $mod+Shift+y		exec --no-startup-id "sh ~/.scripts/i3resize left"
+bindsym $mod+Shift+u		exec --no-startup-id "sh ~/.scripts/i3resize down"
+bindsym $mod+Shift+i		exec --no-startup-id "sh ~/.scripts/i3resize up"
+bindsym $mod+Shift+o		exec --no-startup-id "sh ~/.scripts/i3resize right"
+
+bindsym $mod+d			exec --no-startup-id dmenu_run
+
+bindsym $mod+f			fullscreen toggle
+
+bindsym $mod+h			focus left
+bindsym $mod+Shift+h		move left 30
+
+bindsym $mod+j			focus down
+bindsym $mod+Shift+j		move down 30
+
+bindsym $mod+k			focus up
+bindsym $mod+Shift+k		move up 30
+
+bindsym $mod+l			focus right
+bindsym $mod+Shift+l		move right 30
+
+bindsym $mod+x			exec --no-startup-id lockscreen
+
+bindsym $mod+b			exec --no-startup-id firefox
+
+# #---Workspace Bindings---# #
+bindsym $mod+apostrophe		split horizontal ;; exec $term -e ranger
+bindsym $mod+slash		split vertical ;; exec $term -e ranger
+bindsym $mod+shift+apostrophe		split horizontal ;; exec $term
+bindsym $mod+shift+slash		split vertical ;; exec $term
+workspace_auto_back_and_forth yes
+
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+# switch to workspace
+bindsym $mod+1		workspace $ws1
+bindsym $mod+2		workspace $ws2
+bindsym $mod+3		workspace $ws3
+bindsym $mod+4		workspace $ws4
+bindsym $mod+5		workspace $ws5
+bindsym $mod+6		workspace $ws6
+bindsym $mod+7		workspace $ws7
+bindsym $mod+8		workspace $ws8
+bindsym $mod+9		workspace $ws9
+bindsym $mod+0		workspace $ws10
+
+# move focused container to workspace
+bindsym $mod+Shift+1	move container to workspace $ws1
+bindsym $mod+Shift+2	move container to workspace $ws2
+bindsym $mod+Shift+3	move container to workspace $ws3
+bindsym $mod+Shift+4	move container to workspace $ws4
+bindsym $mod+Shift+5	move container to workspace $ws5
+bindsym $mod+Shift+6	move container to workspace $ws6
+bindsym $mod+Shift+7	move container to workspace $ws7
+bindsym $mod+Shift+8	move container to workspace $ws8
+bindsym $mod+Shift+9	move container to workspace $ws9
+bindsym $mod+Shift+0	move container to workspace $ws10
+
+# #---Arrow Keys---# #
+bindsym $mod+Left		focus left
+bindsym $mod+Down		focus down
+bindsym $mod+Up			focus up
+bindsym $mod+Right 		focus right
+bindsym $mod+Shift+Left		move left
+bindsym $mod+Shift+Down		move down
+bindsym $mod+Shift+Up		move up
+bindsym $mod+Shift+Right 	move right
+
+# #---Extra XF86 Keys---# #
+bindsym XF86AudioMicMute	exec $micmute
+bindsym XF86AudioMute		exec --no-startup-id lmc mute
+bindsym XF86AudioLowerVolume	exec --no-startup-id lmc down 5
+bindsym XF86AudioRaiseVolume	exec --no-startup-id lmc up 5
+#bindsym XF86PowerOff		exec --no-startup-id prompt "Shutdown computer?" "$shutdown"
+# these light commands come from the light-git package
+bindsym XF86MonBrightnessDown	exec --no-startup-id light -U 5
+bindsym XF86MonBrightnessUp	exec --no-startup-id light -A 5
+
