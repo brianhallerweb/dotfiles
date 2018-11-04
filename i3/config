@@ -1,41 +1,14 @@
-# vim: filetype=i3
-
 # i3 config
-# This config file will use environmental variables such as $BROWSER and $TERMINAL.
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
 
 # #---Basic Definitions---# #
-# Needed for i3-gaps
-for_window [class="^.*"] border pixel 2
-gaps inner 0
-gaps outer 0
 set $term --no-startup-id $TERMINAL
 set $mod Mod4
-set $stoprec --no-startup-id dmenurecord kill
-set $shutdown sudo -A shutdown -h now
-set $reboot sudo -A reboot
-set $netrefresh --no-startup-id sudo -A systemctl restart NetworkManager
-set $hibernate sudo -A systemctl suspend
 
 # #---Starting External Scripts---# #
-# Setting the background and colorscheme:
-#exec --no-startup-id wal -Ri ~/.config/wall.png >/dev/null
-# Starts dunst for notifications:
-exec --no-startup-id dunst
-# Composite manager:
-exec --no-startup-id compton
-# Runs the key remapping scripts
 exec --no-startup-id ~/.scripts/remaps
-# Run the script to update the mpd i3block on change.
-exec --no-startup-id i3mpdupdate
-# Remove recording icon if not properly closed on last shutdown.
-exec --no-startup-id rm -f ~/.larbs/.recording
-# Network manager applet
-exec --no-startup-id nm-applet
-# mpd startup
-exec --no-startup-id mpd
 
 # Set Xresources colors:
 set_from_resource $darkblack	color0  #000000
@@ -56,8 +29,8 @@ set_from_resource $darkwhite	color7  #000000
 set_from_resource $white	color15 #000000
 set $transparent		#00000000
 
-#                       BORDER		BACKGROUND	TEXT		INDICATOR   CHILD_BORDER
-client.focused		$red		$red		$magenta	$darkmagenta		$darkblue
+#                       BORDER		BACKGROUND	TEXT		INDICATOR               CHILD_BORDER
+client.focused		$red		$red		$white  	$darkmagenta		$darkblue
 client.unfocused	$transparent	$blue		$white		$darkblue		$darkblack
 client.focused_inactive	$transparent	$blue		$white		$darkblue		$darkblack
 client.urgent		$darkred	$darkred	$black		$darkred		$darkred
@@ -161,13 +134,4 @@ bindsym $mod+Shift+Down		move down
 bindsym $mod+Shift+Up		move up
 bindsym $mod+Shift+Right 	move right
 
-# #---Extra XF86 Keys---# #
-bindsym XF86AudioMicMute	exec $micmute
-bindsym XF86AudioMute		exec --no-startup-id lmc mute
-bindsym XF86AudioLowerVolume	exec --no-startup-id lmc down 5
-bindsym XF86AudioRaiseVolume	exec --no-startup-id lmc up 5
-#bindsym XF86PowerOff		exec --no-startup-id prompt "Shutdown computer?" "$shutdown"
-# these light commands come from the light-git package
-bindsym XF86MonBrightnessDown	exec --no-startup-id light -U 5
-bindsym XF86MonBrightnessUp	exec --no-startup-id light -A 5
 
