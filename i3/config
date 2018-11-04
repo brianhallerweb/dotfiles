@@ -6,6 +6,7 @@ bindsym $mod+Shift+c reload
 # #---Basic Definitions---# #
 set $term --no-startup-id $TERMINAL
 set $mod Mod4
+new_window pixel 2 
 
 # #---Starting External Scripts---# #
 exec --no-startup-id ~/.scripts/remaps
@@ -30,9 +31,9 @@ set_from_resource $white	color15 #000000
 set $transparent		#00000000
 
 #                       BORDER		BACKGROUND	TEXT		INDICATOR               CHILD_BORDER
-client.focused		$red		$red		$white  	$darkmagenta		$darkblue
-client.unfocused	$transparent	$blue		$white		$darkblue		$darkblack
-client.focused_inactive	$transparent	$blue		$white		$darkblue		$darkblack
+client.focused		$red		$red		$white  	$darkyellow             $darkyellow
+client.unfocused	$transparent	$blue		$white		$darkblack		$darkblack
+client.focused_inactive	$transparent	$blue		$white		$darkblack		$darkblack
 client.urgent		$darkred	$darkred	$black		$darkred		$darkred
 client.background $black
 
@@ -40,12 +41,13 @@ bar {
 	font pango:mono 12
 	colors {
 			background $darkblack
-			statusline $darkwhite
-			separator $cyan
-			focused_workspace  $blue $darkblue $darkblack
-        		active_workspace   $blue $blue $darkwhite
-      			inactive_workspace $darkblack $darkblack $white
-        		urgent_workspace   $darkblack $darkblack $white
+			statusline $white
+			separator $white
+                                          #BORDER             BACKGROUND              TEXT
+			focused_workspace  $black             $black                  $white
+        		active_workspace   $blue              $blue                   $darkwhite
+      			inactive_workspace $darkblack         $darkblack              $white
+        		urgent_workspace   $darkblack         $darkblack              $white
 		}
 	status_command i3blocks
 	position bottom
@@ -54,7 +56,6 @@ bar {
 }
 
 # #---Letter Key Bindings---# #
-#bindsym $mod+q			[con_id="__focused__" instance="^(?!dropdowncalc|tmuxdd).*$"] kill
 bindsym $mod+q			kill
 
 bindsym $mod+Shift+y		exec --no-startup-id "sh ~/.scripts/i3resize left"
@@ -78,7 +79,7 @@ bindsym $mod+Shift+k		move up 30
 bindsym $mod+l			focus right
 bindsym $mod+Shift+l		move right 30
 
-bindsym $mod+x			exec --no-startup-id lockscreen
+bindsym $mod+x			exec --no-startup-id i3lock
 
 bindsym $mod+b			exec --no-startup-id firefox
 
@@ -87,7 +88,6 @@ bindsym $mod+apostrophe		split horizontal ;; exec $term -e ranger
 bindsym $mod+slash		split vertical ;; exec $term -e ranger
 bindsym $mod+shift+apostrophe		split horizontal ;; exec $term
 bindsym $mod+shift+slash		split vertical ;; exec $term
-workspace_auto_back_and_forth yes
 
 set $ws1 "1"
 set $ws2 "2"
@@ -111,6 +111,7 @@ bindsym $mod+7		workspace $ws7
 bindsym $mod+8		workspace $ws8
 bindsym $mod+9		workspace $ws9
 bindsym $mod+0		workspace $ws10
+workspace_auto_back_and_forth yes
 
 # move focused container to workspace
 bindsym $mod+Shift+1	move container to workspace $ws1

@@ -1,35 +1,44 @@
-*foreground: #00cc00
-*foreground_bold: #a8a19f
-*cursor: #a8a19f
-*background:       #1b1918
+*background:            #002b36
+*foreground:            #657b83
+!*fading:                40
+!*fadeColor:             #002b36
+*cursorColor:           #93a1a1
+*pointerColorBackground:#586e75
+*pointerColorForeground:#93a1a1
 
-!! black
-*color0: #1b1918
-*color8: #766e6b
-!! red
-*color1: #f22c40
-*color9: #f22c40
-!! green
-*color2: #5ab738
-*color10: #5ab738
-!! yellow
-*color3: #d5911a
-*color11: #d5911a
-!! blue
-*color4: #407ee7
-*color12: #407ee7
-!! magenta
-*color5: #6666ea
-*color13: #6666ea
-!! cyan
-*color6: #00ad9c
-*color14: #00ad9c
-!! white
-*color7: #a8a19f
-*color15: #f1efee
+!! black dark/light
+*color0:                #191919
+*color8:                #4c4c4c
+
+!! red dark/light
+*color1:                #d9534f
+*color9:                #e48683
+
+!! green dark/light
+*color2:                #5cb85c
+*color10:               #8ccd8c
+
+!! yellow dark/light
+*color3:                #f89406
+*color11:               #fabe69
+
+!! blue dark/light
+*color4:                #428bca
+*color12:               #5bc0de
+
+!! magenta dark/light
+*color5:                #b85cb8
+*color13:               #cd8ccd
+
+!! cyan dark/light
+*color6:                #4fd5d9
+*color14:               #83e1e4
+
+!! white dark/light
+*color7:                #f9f9f9
+*color15:               #ffffff
 
 URxvt.intensityStyles:	false
-URxvt.background:       [100]#000000
 URxvt.depth:		32
 URxvt.font: 		xft:monospace:size=12
 URxvt.scrollBar:	false
@@ -40,7 +49,7 @@ URxvt.perl-ext-common:	default,matcher,resize-font,url-select,keyboard-select
 URxvt.colorUL:		#4682B4
 !! url-select
 URxvt.keysym.M-u:	perl:url-select:select_next
-URxvt.url-select.launcher: firefox
+URxvt.url-select.launcher: firefox 
 URxvt.url-select.underline: true
 !! keyboard-select:
 URxvt.keysym.M-Escape: perl:keyboard-select:activate
@@ -49,5 +58,4 @@ URxvt.resize-font.smaller:	C-Down
 URxvt.resize-font.bigger:	C-Up
 !! Matcher
 URxvt.url-launcher:	firefox
-URxvt.matcher.button:	1
-
+URxvt.matcher.button: 1

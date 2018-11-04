@@ -9,7 +9,11 @@ call plug#begin()
    Plug 'myusuf3/numbers.vim'
    Plug 'prettier/vim-prettier', { 'do': 'npm install' }   
    Plug 'tpope/vim-surround'
+   Plug 'lifepillar/vim-solarized8'
 call plug#end()
+
+set background=dark
+colorscheme solarized8
 
 :map <C-n> :NERDTree
 

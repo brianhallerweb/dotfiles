@@ -1,7 +1,8 @@
 #!/bin/sh
 
+# Profile file. Runs on login.
+
 export PATH="$PATH:$HOME/.scripts"
-export PYTHONPATH="${PYTHONPATH}:/home/bsh/Documents/UlanMedia"
 export EDITOR="vim"
 export TERMINAL="urxvt"
 export BROWSER="firefox"
