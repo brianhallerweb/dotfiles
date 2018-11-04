@@ -11,8 +11,6 @@ call plug#begin()
    Plug 'tpope/vim-surround'
 call plug#end()
 
-colorscheme Monokai
-
 :map <C-n> :NERDTree
 
 set statusline+=%#warningmsg#
