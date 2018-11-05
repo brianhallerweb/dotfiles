@@ -160,9 +160,6 @@ $ startx
 configure everything else
 
 set wifi
-I don't know the exact order of these commands but it seems that you can
-run the NetworkManager service with systemd and connect to neworks (and 
-remember them) from the command line with nmcli
 $ systemctl start NetworkManager.service
 $ systemctl enable NetworkManager.service
 $ nmcli device wifi list 
@@ -190,7 +187,11 @@ $ git clone https://aur.archlinux.org/urxvt-resize-font-git.git
 $ cd urxvit-resize-font-git
 $ makepkg -si
 
-#######################################
+transfer files from usb backup
+$ mkdir /mnt/usbdrive
+$ sudo chown bsh:wheel /mnt/usbdrive
+$ sudo mount -o gid=wheel,fmask=113,dmask=002 /dev/<drive name> /mnt/usbdrive
+
 #########################################
 this is from the other arch material I have read...
 
