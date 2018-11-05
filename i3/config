@@ -43,14 +43,13 @@ bar {
 			background $darkblack
 			statusline $white
 			separator $white
-                                          #BORDER             BACKGROUND              TEXT
+                        #                  BORDER             BACKGROUND              TEXT
 			focused_workspace  $black             $black                  $white
         		active_workspace   $blue              $blue                   $darkwhite
       			inactive_workspace $darkblack         $darkblack              $white
         		urgent_workspace   $darkblack         $darkblack              $white
 		}
 	status_command i3blocks
-	position bottom
 	mode dock
 	modifier None
 }
@@ -58,10 +57,10 @@ bar {
 # #---Letter Key Bindings---# #
 bindsym $mod+q			kill
 
-bindsym $mod+Shift+y		exec --no-startup-id "sh ~/.scripts/i3resize left"
-bindsym $mod+Shift+u		exec --no-startup-id "sh ~/.scripts/i3resize down"
-bindsym $mod+Shift+i		exec --no-startup-id "sh ~/.scripts/i3resize up"
-bindsym $mod+Shift+o		exec --no-startup-id "sh ~/.scripts/i3resize right"
+bindsym $mod+y		exec --no-startup-id "sh ~/.scripts/i3resize left"
+bindsym $mod+u		exec --no-startup-id "sh ~/.scripts/i3resize down"
+bindsym $mod+i		exec --no-startup-id "sh ~/.scripts/i3resize up"
+bindsym $mod+o		exec --no-startup-id "sh ~/.scripts/i3resize right"
 
 bindsym $mod+d			exec --no-startup-id dmenu_run
 
@@ -134,5 +133,14 @@ bindsym $mod+Shift+Left		move left
 bindsym $mod+Shift+Down		move down
 bindsym $mod+Shift+Up		move up
 bindsym $mod+Shift+Right 	move right
+
+# audio controls
+bindsym XF86AudioMute exec --no-startup-id pulsemixer --toggle-mute
+bindsym XF86AudioLowerVolume exec --no-startup-id pulsemixer --change-volume -5
+bindsym XF86AudioRaiseVolume exec --no-startup-id pulsemixer --change-volume +5
+
+# brightness controls
+bindsym XF86MonBrightnessDown exec --no-startup-id light -U 10
+bindsym XF86MonBrightnessUp exec --no-startup-id light -A 10 
 
 

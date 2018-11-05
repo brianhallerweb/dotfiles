@@ -1,0 +1,10 @@
+separator_block_width=25
+
+[volume]
+interval=1
+command=i3volume
+signal=10
+
+[time]
+command=echo $(date '+%b %d %a  %I:%M%p') 
+interval=30
