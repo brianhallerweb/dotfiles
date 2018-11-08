@@ -1,0 +1,17 @@
+# .Renviron is good for setting environmental variables like a user library or
+# API keys
+# to check environmental variables within R, use Sys.getenv()
+
+# where to install new packages
+R_LIBS_USER=~/.R/library
+# I'm not sure what R_LIBS_SITE does as it is "" by default
+#R_LIBS_SITE=~/.R/library
+
+# it seems that my new packages are now downloaded into ~/.R/library but they
+# can be loaded either from there or the root directory. 
+
+# remove package from ~/.R/library
+# remove.packages("package name")
+# dependencies are not automatically removed
+
+

@@ -1,17 +1,19 @@
 # i3 config
 
+focus_follows_mouse no
+
 # reload the configuration file
 bindsym $mod+Shift+c reload
 
-# #---Basic Definitions---# #
+# basic definitions
 set $term --no-startup-id $TERMINAL
 set $mod Mod4
 new_window pixel 2 
 
-# #---Starting External Scripts---# #
+# remap keyboard
 exec --no-startup-id ~/.scripts/remaps
 
-# Set Xresources colors:
+# set colors from .Xdefaults
 set_from_resource $darkblack	color0  #000000
 set_from_resource $black	color8  #000000
 set_from_resource $darkred	color1  #000000
@@ -37,6 +39,108 @@ client.focused_inactive	$transparent	$blue		$white		$darkblack		$darkblack
 client.urgent		$darkred	$darkred	$black		$darkred		$darkred
 client.background $black
 
+
+# key bindings
+# bindsym $mod+q			kill
+bindsym F11 			kill
+
+bindsym $mod+y		exec --no-startup-id "sh ~/.scripts/i3resize left"
+bindsym $mod+u		exec --no-startup-id "sh ~/.scripts/i3resize down"
+bindsym $mod+i		exec --no-startup-id "sh ~/.scripts/i3resize up"
+bindsym $mod+o		exec --no-startup-id "sh ~/.scripts/i3resize right"
+
+bindsym $mod+x			exec --no-startup-id i3lock
+bindsym $mod+d			exec --no-startup-id dmenu_run
+bindsym $mod+b			exec --no-startup-id firefox
+
+# bindsym $mod+f			fullscreen toggle
+bindsym F10 			fullscreen toggle
+
+bindsym $mod+h			focus left
+bindsym $mod+Shift+h		move left 30
+bindsym $mod+j			focus down
+bindsym $mod+Shift+j		move down 30
+bindsym $mod+k			focus up
+bindsym $mod+Shift+k		move up 30
+bindsym $mod+l			focus right
+bindsym $mod+Shift+l		move right 30
+
+bindsym $mod+Left		focus left
+bindsym $mod+Down		focus down
+bindsym $mod+Up			focus up
+bindsym $mod+Right 		focus right
+bindsym $mod+Shift+Left		move left
+bindsym $mod+Shift+Down		move down
+bindsym $mod+Shift+Up		move up
+bindsym $mod+Shift+Right 	move right
+
+# workspace bindings
+bindsym $mod+Return	        	split horizontal ;; exec $term -e ranger
+bindsym $mod+Shift+Return		split vertical ;; exec $term -e ranger
+
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+
+# switch to workspace
+bindsym F1		workspace $ws1
+bindsym F2		workspace $ws2
+bindsym F3		workspace $ws3
+bindsym F4		workspace $ws4
+bindsym F5		workspace $ws5
+bindsym F6		workspace $ws6
+bindsym F7		workspace $ws7
+bindsym F8		workspace $ws8
+bindsym F9		workspace $ws9
+#bindsym $mod+1		workspace $ws1
+#bindsym $mod+2		workspace $ws2
+#bindsym $mod+3		workspace $ws3
+#bindsym $mod+4		workspace $ws4
+#bindsym $mod+5		workspace $ws5
+#bindsym $mod+6		workspace $ws6
+#bindsym $mod+7		workspace $ws7
+#bindsym $mod+8		workspace $ws8
+#bindsym $mod+9		workspace $ws9
+#bindsym $mod+0		workspace $ws10
+workspace_auto_back_and_forth yes
+
+# move focused container to workspace
+bindsym $mod+F1	move container to workspace $ws1
+bindsym $mod+F2	move container to workspace $ws2
+bindsym $mod+F3	move container to workspace $ws3
+bindsym $mod+F4	move container to workspace $ws4
+bindsym $mod+F5	move container to workspace $ws5
+bindsym $mod+F6	move container to workspace $ws6
+bindsym $mod+F7	move container to workspace $ws7
+bindsym $mod+F8	move container to workspace $ws8
+bindsym $mod+F9	move container to workspace $ws9
+#bindsym $mod+Shift+1	move container to workspace $ws1
+#bindsym $mod+Shift+2	move container to workspace $ws2
+#bindsym $mod+Shift+3	move container to workspace $ws3
+#bindsym $mod+Shift+4	move container to workspace $ws4
+#bindsym $mod+Shift+5	move container to workspace $ws5
+#bindsym $mod+Shift+6	move container to workspace $ws6
+#bindsym $mod+Shift+7	move container to workspace $ws7
+#bindsym $mod+Shift+8	move container to workspace $ws8
+#bindsym $mod+Shift+9	move container to workspace $ws9
+#bindsym $mod+Shift+0	move container to workspace $ws10
+
+# audio controls
+bindsym XF86AudioMute exec --no-startup-id pulsemixer --toggle-mute
+bindsym XF86AudioLowerVolume exec --no-startup-id pulsemixer --change-volume -5
+bindsym XF86AudioRaiseVolume exec --no-startup-id pulsemixer --change-volume +5
+
+# brightness controls
+bindsym XF86MonBrightnessDown exec --no-startup-id light -U 10
+bindsym XF86MonBrightnessUp exec --no-startup-id light -A 10 
+
+# i3blocks 
 bar {
 	font pango:mono 12
 	colors {
@@ -53,94 +157,3 @@ bar {
 	mode dock
 	modifier None
 }
-
-# #---Letter Key Bindings---# #
-bindsym $mod+q			kill
-
-bindsym $mod+y		exec --no-startup-id "sh ~/.scripts/i3resize left"
-bindsym $mod+u		exec --no-startup-id "sh ~/.scripts/i3resize down"
-bindsym $mod+i		exec --no-startup-id "sh ~/.scripts/i3resize up"
-bindsym $mod+o		exec --no-startup-id "sh ~/.scripts/i3resize right"
-
-bindsym $mod+d			exec --no-startup-id dmenu_run
-
-bindsym $mod+f			fullscreen toggle
-
-bindsym $mod+h			focus left
-bindsym $mod+Shift+h		move left 30
-
-bindsym $mod+j			focus down
-bindsym $mod+Shift+j		move down 30
-
-bindsym $mod+k			focus up
-bindsym $mod+Shift+k		move up 30
-
-bindsym $mod+l			focus right
-bindsym $mod+Shift+l		move right 30
-
-bindsym $mod+x			exec --no-startup-id i3lock
-
-bindsym $mod+b			exec --no-startup-id firefox
-
-# #---Workspace Bindings---# #
-bindsym $mod+apostrophe		split horizontal ;; exec $term -e ranger
-bindsym $mod+slash		split vertical ;; exec $term -e ranger
-bindsym $mod+shift+apostrophe		split horizontal ;; exec $term
-bindsym $mod+shift+slash		split vertical ;; exec $term
-
-set $ws1 "1"
-set $ws2 "2"
-set $ws3 "3"
-set $ws4 "4"
-set $ws5 "5"
-set $ws6 "6"
-set $ws7 "7"
-set $ws8 "8"
-set $ws9 "9"
-set $ws10 "10"
-
-# switch to workspace
-bindsym $mod+1		workspace $ws1
-bindsym $mod+2		workspace $ws2
-bindsym $mod+3		workspace $ws3
-bindsym $mod+4		workspace $ws4
-bindsym $mod+5		workspace $ws5
-bindsym $mod+6		workspace $ws6
-bindsym $mod+7		workspace $ws7
-bindsym $mod+8		workspace $ws8
-bindsym $mod+9		workspace $ws9
-bindsym $mod+0		workspace $ws10
-workspace_auto_back_and_forth yes
-
-# move focused container to workspace
-bindsym $mod+Shift+1	move container to workspace $ws1
-bindsym $mod+Shift+2	move container to workspace $ws2
-bindsym $mod+Shift+3	move container to workspace $ws3
-bindsym $mod+Shift+4	move container to workspace $ws4
-bindsym $mod+Shift+5	move container to workspace $ws5
-bindsym $mod+Shift+6	move container to workspace $ws6
-bindsym $mod+Shift+7	move container to workspace $ws7
-bindsym $mod+Shift+8	move container to workspace $ws8
-bindsym $mod+Shift+9	move container to workspace $ws9
-bindsym $mod+Shift+0	move container to workspace $ws10
-
-# #---Arrow Keys---# #
-bindsym $mod+Left		focus left
-bindsym $mod+Down		focus down
-bindsym $mod+Up			focus up
-bindsym $mod+Right 		focus right
-bindsym $mod+Shift+Left		move left
-bindsym $mod+Shift+Down		move down
-bindsym $mod+Shift+Up		move up
-bindsym $mod+Shift+Right 	move right
-
-# audio controls
-bindsym XF86AudioMute exec --no-startup-id pulsemixer --toggle-mute
-bindsym XF86AudioLowerVolume exec --no-startup-id pulsemixer --change-volume -5
-bindsym XF86AudioRaiseVolume exec --no-startup-id pulsemixer --change-volume +5
-
-# brightness controls
-bindsym XF86MonBrightnessDown exec --no-startup-id light -U 10
-bindsym XF86MonBrightnessUp exec --no-startup-id light -A 10 
-
-

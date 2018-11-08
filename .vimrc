@@ -5,6 +5,7 @@ call plug#begin()
    Plug 'scrooloose/nerdtree'
    Plug 'pangloss/vim-javascript'   
    Plug 'scrooloose/syntastic'
+   Plug 'scrooloose/nerdcommenter'
    Plug 'ervandew/supertab'
    Plug 'myusuf3/numbers.vim'
    Plug 'prettier/vim-prettier', { 'do': 'npm install' }   
@@ -31,3 +32,10 @@ vnoremap <C-c> "+y
 map <C-p> "+p
 
 set textwidth=79
+
+"config for nerdcommenter
+",cc will comment out selected lines
+",c<space> will toggle comments
+filetype plugin on
+let mapleader=","
+

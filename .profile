@@ -3,6 +3,7 @@
 # Profile file. Runs on login.
 
 export PATH="$PATH:$HOME/.scripts"
+export PYTHONPATH="$PYTHONPATH:$HOME/Documents/UlanMedia"
 export EDITOR="vim"
 export TERMINAL="urxvt"
 export BROWSER="firefox"
