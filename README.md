@@ -167,14 +167,13 @@ a bunch more installs
 $ sudo pacman -S xcape firefox git ranger gvim 
 
 git clone your dotfiles repo
-move the .profile, .bashrc, i3 config and remaps into place
-remaps should run from i3 config
+move your dotfiles into the home directory
 
 enable copy and paste
 move .vimrc and .vim folder into place (you need to add .vim to dotfiles repo)
 
-unmute the sound (for some reason it is muted by default)
-$ sudo pacman -S alsa-utils
+enable audio and  unmute the sound (for some reason it is muted by default)
+$ sudo pacman -S alsa-utils pulseaudio
 $ amixer sset Master unmute
 $ amixer sset Speaker unmute
 $ amixer sset Headphone unmute
@@ -188,10 +187,6 @@ decrease brightness
 There should be lines in the i3 config for connecting those commands with
 brightness keys
 
-audio
-I can't remember all the audio packages I installed but I think it is just
-pulsemixer and then starting a daemon.
-
 download perl scripts for urxvt extras
 $ sudo pacman -S urxvt-perls
 $ git clone https://aur.archlinux.org/urxvt-resize-font-git.git
@@ -202,11 +197,6 @@ transfer files from usb backup
 $ sudo mkdir /mnt/usbdrive
 $ sudo chown bsh:wheel /mnt/usbdrive
 $ sudo mount -o gid=wheel,fmask=113,dmask=002 /dev/<drive name> /mnt/usbdrive
-
-set time
-It looks like the time zone was supposed to be set earlier in the instlal
-process by creating a symbolic link. I don't think it worked for me so I had to 
-use the timedatectl from the arch wiki to do it. 
 
 #########################################
 this is from the other arch material I have read...
