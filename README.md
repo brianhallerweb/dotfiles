@@ -1,21 +1,18 @@
-########################################
 #arch/i3 installation 
 
-########################################
-Prepare usb stick
+###Prepare usb stick
 
 download arch iso 
 show your drives
-$ lsblk 
+'''$ lsblk'''
 plug in your usb stick and show your drives again, remember the name of the usb stick
-$ lsblk
+'''$ lsblk'''
 change user to root
-$ su root
-then use dd (disk dump? known as disk destroyer) to put the iso on the usb stick
-# dd if=Downloads/archlinux-2018.10.01-x86_64.iso of=/dev/sdb status="progress"
+'''$ su root'''
+then use dd (knowwn as disk destroyer) to put the iso on the usb stick
+'''# dd if=Downloads/archlinux-2018.10.01-x86_64.iso of=/dev/sdb status="progress"'''
 
-########################################
-Partition and mount your hard drive
+###Partition and mount your hard drive
 
 boot from usb
 that will give you an arch installer root command line
@@ -192,6 +189,25 @@ $ sudo pacman -S urxvt-perls
 $ git clone https://aur.archlinux.org/urxvt-resize-font-git.git
 $ cd urxvit-resize-font-git
 $ makepkg -si
+
+enable bluetooth for headphones
+install pulseaudio-alsa, pulseaudio-bluetooth, bluez, bluez-libs, bluez-utils
+$ systemctl start bluetooth.service
+$ systemctl enable bluetooth.service
+$ bluetoothctl
+[bluetooth]# power on
+[bluetooth]# agent on
+[bluetooth]# default-agent
+[bluetooth]# scan on
+[bluetooth]# pair <mac address>
+[bluetooth]# connect <mac address>
+[bluetooth]# trust <mac address>
+if this step fails,$ pulseaudio -k, then try again
+[bluetooth]# scan off
+[bluetooth]# exit
+add "load-module module-switch-on-connect" to the bottom of
+/etc/pulse/default.pa
+add "AutoEnable=true" to the bottom of /etc/bluetooth/main.conf
 
 transfer files from usb backup
 $ sudo mkdir /mnt/usbdrive
