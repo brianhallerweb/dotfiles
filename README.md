@@ -1,18 +1,18 @@
-#arch/i3 installation 
+# arch/i3 installation 
 
-###Prepare usb stick
+### Prepare usb stick
 
 download arch iso 
 show your drives
-'''$ lsblk'''
+    $ lsblk
 plug in your usb stick and show your drives again, remember the name of the usb stick
-'''$ lsblk'''
+    $ lsblk
 change user to root
-'''$ su root'''
+    $ su root
 then use dd (knowwn as disk destroyer) to put the iso on the usb stick
-'''# dd if=Downloads/archlinux-2018.10.01-x86_64.iso of=/dev/sdb status="progress"'''
+    # dd if=Downloads/archlinux-2018.10.01-x86_64.iso of=/dev/sdb status="progress"
 
-###Partition and mount your hard drive
+### Partition and mount your hard drive
 
 boot from usb
 that will give you an arch installer root command line
