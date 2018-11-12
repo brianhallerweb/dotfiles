@@ -1,10 +1,12 @@
-# arch/i3 installation 
+## arch/i3 installation 
 
 ### Prepare usb stick
 
 download arch iso 
 show your drives
-    $ lsblk
+```
+$ lsblk
+```
 plug in your usb stick and show your drives again, remember the name of the usb stick
     $ lsblk
 change user to root
