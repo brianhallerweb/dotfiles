@@ -1,0 +1,6 @@
+#!/bin/sh
+
+# use the alias wifilist to show available networks
+
+nmcli device wifi connect $1 password $2
+

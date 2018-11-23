@@ -13,3 +13,9 @@ xmodmap -e 'keycode 135 = Super_R'
 
 # turn off keyboard beep
 xset b off
+
+# 11/12 this is an experiment to turn screen saver blanking to 1 hour
+# I haven't checked to see if it works
+# xset s off doesn't work but xset s 60 does seeem to chanking the blanking
+# time to 1 minute
+xset s 3600
