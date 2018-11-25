@@ -222,6 +222,14 @@ $ sudo mkdir /mnt/usbdrive
 $ sudo chown bsh:wheel /mnt/usbdrive
 $ sudo mount -o gid=wheel,fmask=113,dmask=002 /dev/<drive name> /mnt/usbdrive
 
+if you need to change timezone
+check current timezone 
+$ timedatectl status
+list available timezones 
+$ timedatectl list-timezones
+change timezone
+$ timedatectl set-timezone Zone/SubZone
+
 #########################################
 
 more about arch
