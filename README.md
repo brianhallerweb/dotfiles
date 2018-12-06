@@ -153,7 +153,7 @@ How does xorg work? When you run xinit or startx the x server starts. It reads
 create .xinitrc and write "exec i3"
 # vim /home/bsh/.xinitrc
 install the standard i3 stuff
-# pacman -S i3-wm i3blocks i3lock rxvt-unicode dmenu
+# pacman -S i3-wm i3blocks i3lock rxvt-unicode dmenu perl-anyevent-i3 perl-json-xs 
 install fonts
 # pacman -S ttf-linux-libertine ttf-inconsolata
 start i3 as bsh (reboot and sign in as bsh)

@@ -1,0 +1,9 @@
+#!/bin/sh
+
+# 11/26 This script is for testing purposes. I hope to learn how to write a udev rule
+# so that my remaps script or togglemonitor script will run automatically upon
+# plugging in/out. 
+
+echo hello world > /home/bsh/testwrite.txt
+
+echo A file named testwrite.txt should have been created in /home/bsh/

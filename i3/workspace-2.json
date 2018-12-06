@@ -1,0 +1,76 @@
+// vim:ts=4:sw=4:et
+{
+    "border": "pixel",
+    "current_border_width": 2,
+    "floating": "auto_off",
+    "geometry": {
+       "height": 436,
+       "width": 724,
+       "x": 0,
+       "y": 0
+    },
+    "name": "ranger",
+    "percent": 0.217423133235725,
+    "swallows": [
+       {
+        "class": "^URxvt$",
+        "instance": "^urxvt$",
+        "title": "^ranger$"
+       }
+    ],
+    "type": "con"
+}
+
+{
+    // splith split container with 2 children
+    "border": "pixel",
+    "floating": "auto_off",
+    "layout": "splith",
+    "percent": 0.782576866764275,
+    "type": "con",
+    "nodes": [
+        {
+            "border": "pixel",
+            "current_border_width": 2,
+            "floating": "auto_off",
+            "geometry": {
+               "height": 436,
+               "width": 724,
+               "x": 0,
+               "y": 0
+            },
+            "name": "ranger",
+            "percent": 0.587464920486436,
+            "swallows": [
+               {
+                "class": "^URxvt$",
+                "instance": "^urxvt$",
+                "title": "^ranger$"
+               }
+            ],
+            "type": "con"
+        },
+        {
+            "border": "pixel",
+            "current_border_width": 2,
+            "floating": "auto_off",
+            "geometry": {
+               "height": 436,
+               "width": 724,
+               "x": 0,
+               "y": 0
+            },
+            "name": "ranger",
+            "percent": 0.412535079513564,
+            "swallows": [
+               {
+                "class": "^URxvt$",
+                "instance": "^urxvt$",
+                "title": "^ranger$"
+               }
+            ],
+            "type": "con"
+        }
+    ]
+}
+
