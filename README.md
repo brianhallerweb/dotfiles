@@ -18,6 +18,7 @@ $ su root
 then use dd (knowwn as disk destroyer) to put the iso on the usb stick
 ```
 # dd if=Downloads/archlinux-2018.10.01-x86_64.iso of=/dev/sdb status="progress"
+dd if=Downloads/archlinux-2019.01.01-x86_64.iso of=/dev/sdd status="progress"
 ```
 
 ### Partition and mount your hard drive
@@ -132,6 +133,17 @@ Install window manager and more software
 connect to wifi
 # wifi-menu 
 
+or if you need to connect with ethernet
+find your network card name
+# ip a
+It will be something like enp0s3
+# cp /etc/netctl/examples/ethernet-dhcp /etc/netctl/enp0s3
+
+edit this file so that "interface=enp0s3"
+# sudo vim /etc/netctl/enp0s3
+then reboot
+
+
 create a user and put it in the wheel group
 # useradd -m -g wheel bsh
 add password
@@ -240,7 +252,7 @@ So you regularly have to update this mirror list
 To update go to archlinux.org/mirrorlist
 choose US and check "use mirror status"
 that will give you a list or mirrors, ordered by quality
-Take 5 or so of those and paste them into your mirrorlist file
+Take 5 or so of those and paste them into your mirrorlist file located at /etc/pacman.d/mirrorlist
 delete all the previous ones and make sure to uncomment the new ones
 make pacman aware of new mirror list
 ```
