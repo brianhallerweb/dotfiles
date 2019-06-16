@@ -186,7 +186,7 @@ git clone your dotfiles repo
 move your dotfiles into the home directory
 
 enable copy and paste
-move .vimrc and .vim folder into place (you need to add .vim to dotfiles repo)
+move .vimrc and .vim folder into place 
 
 enable audio and  unmute the sound (for some reason it is muted by default)
 $ sudo pacman -S alsa-utils pulseaudio
@@ -206,7 +206,7 @@ brightness keys
 download perl scripts for urxvt extras
 $ sudo pacman -S urxvt-perls
 $ git clone https://aur.archlinux.org/urxvt-resize-font-git.git
-$ cd urxvit-resize-font-git
+$ cd urxvt-resize-font-git
 $ makepkg -si
 
 enable bluetooth for headphones
