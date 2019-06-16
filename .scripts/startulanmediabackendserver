@@ -1,0 +1,7 @@
+#!/bin/sh
+
+cd /home/bsh/Documents/UlanMedia/dashboard/server
+sudo systemctl start mongodb
+nodemon server
+
+

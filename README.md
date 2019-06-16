@@ -18,8 +18,6 @@ $ su root
 then use dd (knowwn as disk destroyer) to put the iso on the usb stick
 ```
 # dd if=Downloads/archlinux-2018.10.01-x86_64.iso of=/dev/sdb status="progress"
-dd if=Downloads/archlinux-2019.01.01-x86_64.iso of=/dev/sdd status="progress"
-```
 
 ### Partition and mount your hard drive
 
@@ -179,6 +177,7 @@ $ systemctl start NetworkManager.service
 $ systemctl enable NetworkManager.service
 $ nmcli device wifi list 
 $ nmcli device wifi connect <SSID> password <password> 
+then reboot
 
 a bunch more installs 
 $ sudo pacman -S xcape firefox git ranger gvim 
@@ -239,7 +238,7 @@ check current timezone
 $ timedatectl status
 list available timezones 
 $ timedatectl list-timezones
-change timezone
+change timezone (eg America/Los_Angeles or America/Denver)
 $ timedatectl set-timezone Zone/SubZone
 
 #########################################
@@ -265,7 +264,6 @@ and getting out of date can make for difficult troubleshooting
 ```
 $ sudo pacman -Syu
 ```
-
 process management in arch
 a process is the same thing as a service or a deamon 
 systemd is what manages these background processes
@@ -295,7 +293,6 @@ to see the logs for the most recent boot
 $ journalctl -b
 to see the logs for a particular process (in this case, ntp)
 $ journalctl -fu ntpd
-
 
 AUR 
 pacman works for almost everything but the aur is an extra package manager for

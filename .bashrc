@@ -13,5 +13,6 @@ alias lsa='ls -alhN --color=auto --group-directories-first'
 alias grep="grep --color=auto"
 alias ccat="highlight --out-format=ansi"
 alias wifilist="nmcli device wifi list"
+alias startmongodb="sudo systemctl start mongodb"
 alias brianhaller.net="ssh bsh@brianhaller.net"
 alias ulanmedia.com="ssh serverpilot@ulanmedia.com"

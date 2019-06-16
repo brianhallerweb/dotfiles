@@ -1,0 +1,5 @@
+#!/bin/sh
+
+sudo mount -o gid=wheel,fmask=113,dmask=002 /dev/$1 /mnt/usbdrive
+
+

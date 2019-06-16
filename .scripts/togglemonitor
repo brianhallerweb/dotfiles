@@ -1,6 +1,7 @@
 #!/bin/bash
 intern=LVDS1
-extern=HDMI1
+#extern=HDMI1
+extern=VGA1
 
 if xrandr | grep "$extern disconnected"; then
     xrandr --output "$extern" --off --output "$intern" --auto

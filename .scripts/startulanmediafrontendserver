@@ -1,0 +1,7 @@
+#!/bin/sh
+
+cd /home/bsh/Documents/UlanMedia/dashboard
+npm run dev-server
+
+
+
