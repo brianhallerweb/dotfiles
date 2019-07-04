@@ -1,0 +1,4 @@
+#!/bin/sh
+
+cd /home/bsh/macros
+python app.py

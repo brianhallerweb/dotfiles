@@ -1,0 +1,5 @@
+#!/bin/sh
+
+light -U 100
+light -A 1
+
