@@ -7,7 +7,7 @@ command=i3volume
 signal=10
 
 [battery]
-command=i3battery BAT0
+command=echo $(i3battery BAT0)
 interval=5
 
 [time]
