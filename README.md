@@ -1,4 +1,4 @@
-## arch/i3 installation 
+## arch/i3 installation as of 4/15/20
 
 ### Prepare usb stick
 
@@ -23,7 +23,8 @@ then use dd (knowwn as disk destroyer) to put the iso on the usb stick
 
 boot from usb
 that will give you an arch installer root command line
-double check that your computer doesn't need efi install
+double check that your computer doesn't need efi install (Thinkpad x220
+doesn't)
 if these files exist, you do need efi install
 # ls /sys/firmware/efi/efivars 
 then connect to a wifi network with # wifi-menu
@@ -81,7 +82,7 @@ show that the partitions are not yet mounted
 Install arch and boot from hard drive
 
 install arch with pacstrap
-# pacstrap /mnt base base-devel
+# pacstrap /mnt base linux linux-firmware
 
 generate fstab file 
 fstab is a text file that contains a list of partitions for the bootloader to
@@ -110,8 +111,14 @@ write LANG=en_US.UTF-8 to /etc/locale.conf (that will be a new file)
 set the timezone
 # ln -sf /usr/share/zoneinfo/America/Los_Angeles (or Denver) /etc/localtime
 
-set hostname to arch-thinkpad
+set hostname to arch-thinkpad 
 # vim /etc/hostname
+
+edit the hosts file like this:
+127.0.0.1	localhost
+::1		localhost
+127.0.1.1	myhostname.localdomain	myhostname
+# vim /etc/hosts
 
 unmount everything (optional, and never seems to work...)
 # umount -R /mnt
@@ -128,27 +135,21 @@ alt left arrow (or right arrow) will switch between ttys
 ##############################################################
 Install window manager and more software
 
-connect to wifi
-# wifi-menu 
-
-or if you need to connect with ethernet
-find your network card name
-# ip a
-It will be something like enp0s3
-# cp /etc/netctl/examples/ethernet-dhcp /etc/netctl/enp0s3
-
-edit this file so that "interface=enp0s3"
-# sudo vim /etc/netctl/enp0s3
-then reboot
-
+set wifi
+$ systemctl start NetworkManager.service
+$ systemctl enable NetworkManager.service
+$ nmcli device wifi list 
+$ nmcli device wifi connect <SSID> password <password> 
 
 create a user and put it in the wheel group
 # useradd -m -g wheel bsh
 add password
 # passwd bsh
 give bsh sudo priveliges by uncommenting the line that gives sudo privileges to members of the wheel group 
-choose the line that also removes the need for a password
-# vim /etc/sudoers
+choose the line that also removes the need for a password. edit this file with
+visudo.
+# pacman S sudo vi
+# visudo /etc/sudoers
 
 Install xorg to be able to run graphical environments
 find your video card
@@ -172,13 +173,6 @@ $ startx
 #########################################
 configure everything else
 
-set wifi
-$ systemctl start NetworkManager.service
-$ systemctl enable NetworkManager.service
-$ nmcli device wifi list 
-$ nmcli device wifi connect <SSID> password <password> 
-then reboot
-
 a bunch more installs 
 $ sudo pacman -S xcape firefox git ranger gvim 
 
@@ -189,7 +183,7 @@ enable copy and paste
 move .vimrc and .vim folder into place 
 
 enable audio and  unmute the sound (for some reason it is muted by default)
-$ sudo pacman -S alsa-utils pulseaudio
+$ sudo pacman -S alsa-utils pulseaudio pulsemixer
 $ amixer sset Master unmute
 $ amixer sset Speaker unmute
 $ amixer sset Headphone unmute
